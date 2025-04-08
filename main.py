@@ -22,7 +22,8 @@ async def webhook(
     # Verify the webhook
     if mode == "subscribe" and verify_token == "TESTING":
         if challenge:
-            return int(challenge)
+            # Return the challenge as a string, not an int
+            return challenge
         return {"success": True}
     
     return {"error": "Invalid verification request"}
