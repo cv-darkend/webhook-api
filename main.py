@@ -2,7 +2,7 @@ from fastapi import FastAPI, Query, Path, Request, Header
 from typing import List, Annotated
 
 
-app = FastAPI()
+app = FastAPI(root_path='/api')
 
 @app.get("/")
 async def read_root():
