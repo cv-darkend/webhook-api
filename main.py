@@ -43,6 +43,7 @@ async def webhook_post(request: Request):
                         for message in messages:
                             # Handle the message here
                             # Example: print(message)
+                            print(message)
                             pass
         
         # Return a 200 OK response to acknowledge receipt of the event
