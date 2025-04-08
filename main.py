@@ -13,7 +13,7 @@ async def read_root():
 async def webhook(
     mode: Annotated[str, Query(alias="hub.mode")],
     verify_token: Annotated[str, Query(alias="hub.verify_token")],
-    challenge: Annotated[str, Query(alias="hub.challenge", required=False)] = None,
+    challenge: Annotated[str, Query(alias="hub.challenge")] = None,
 ):
     print(f"mode: {mode}")
     print(f"verify_token: {verify_token}")
