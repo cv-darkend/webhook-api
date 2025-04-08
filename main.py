@@ -16,6 +16,9 @@ async def webhook(
     verify_token: Annotated[str, Query(alias="hub.verify_token")],
     challenge: Annotated[str, Query(alias="hub.challenge", required=False)] = None,
 ):
+    print(f"mode: {mode}")
+    print(f"verify_token: {verify_token}")
+    print(f"challenge: {challenge}")
     # Verify the webhook
     if mode == "subscribe" and verify_token == "TESTING":
         if challenge:
