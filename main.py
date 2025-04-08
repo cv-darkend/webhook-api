@@ -12,9 +12,9 @@ async def read_root():
 @app.get("/webhook")
 async def webhook(
     request: Request,
-    mode: Annotated[str, Query(alias="hub.mode")],
-    verify_token: Annotated[str, Query(alias="hub.verify_token")],
-    challenge: Annotated[str, Query(alias="hub.challenge", required=False)] = None,
+    mode: str = Query(None, alias="hub.mode"),
+    verify_token: str = Query(None, alias="hub.verify_token"),
+    challenge: str = Query(None, alias="hub.challenge"),
 ):
     print(f"mode: {mode}")
     print(f"verify_token: {verify_token}")
@@ -22,7 +22,7 @@ async def webhook(
     # Verify the webhook
     if mode == "subscribe" and verify_token == "TESTING":
         if challenge:
-            # Return the challenge as a string, not an int
+            # Return the challenge as a string directly
             return challenge
         return {"success": True}
     
