@@ -12,7 +12,7 @@ async def read_root():
 @app.get("/webhook")
 async def webhook(
     request: Request,
-    mode: Annotated[str, Query()],
+    mode: Annotated[str, Query(alias="hub.mode")],
     verify_token: Annotated[str, Query(alias="hub.verify_token")],
     challenge: Annotated[str, Query(alias="hub.challenge", required=False)] = None,
 ):
