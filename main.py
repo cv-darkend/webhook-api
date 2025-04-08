@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query, Path, Request, Header
+from fastapi import FastAPI, Query, Path, Request, Header, Response
 from typing import List, Annotated
 
 
@@ -22,7 +22,7 @@ async def webhook(
     if mode == "subscribe" and verify_token == "TESTING":
         if challenge:
             # Return the challenge as a string, not an int
-            return challenge
+            return Response(content=challenge, media_type="text/plain")
         return {"success": True}
     
     return {"error": "Invalid verification request"}
